@@ -1,0 +1,244 @@
+ .feature-thumb{
+       -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    border: 1px solid #f0f0f0;
+    padding: 5em 3em;
+    margin-bottom: 50px;
+} 
+
+.feature-title{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #454545;
+    line-height: normal;
+    margin: 10px 0;
+}
+
+.feature-parraf{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    margin: 0 0 10px;
+    color: #757575;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 24px;
+}
+
+.card-title{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    text-align: left;
+    cursor: e-resize;
+    box-sizing: border-box;
+    margin: .67em 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: normal;
+    color: #ffffff;
+}
+
+.card-parraf{
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    text-align: left;
+    cursor: e-resize;
+    box-sizing: border-box;
+    font-family: 'Muli', sans-serif;
+    line-height: normal;
+    color: #f9f9f9;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+    padding: 5px 0 40px 0;
+}
+
+.section-title{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    padding-bottom: 40px;
+}
+
+.team-image{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.team-thumb{
+-webkit-text-size-adjust: 100%;
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+-webkit-font-smoothing: antialiased;
+font-size: 14px;
+line-height: 1.42857143;
+color: #333;
+font-family: 'Nunito', sans-serif;
+box-sizing: border-box;
+background: #ffffff;
+position: relative;
+overflow: hidden;
+text-align: left;
+margin-bottom: 50px;
+}
+
+.team-info{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 20px 30px;
+}
+
+.img-responsive{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    text-align: left;
+    box-sizing: border-box;
+    border: 0;
+    vertical-align: middle;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+.contact-form{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    padding: 60px 0;
+    background: #3f51b5;
+}
+
+.mensaje-form{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    padding: 1em 0;
+}
+
+.seccion-titulo{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+.titulo-contacto{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    padding-bottom: 10px;
+    line-height: normal;
+    margin: 0;
+    margin-left: 35%;
+    color: #ffffff;
+}
+
+.send-msj{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font: inherit;
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    transition: 0.5s;
+    -webkit-appearance: button;
+    cursor: pointer;
+    height: 50px;
+    box-shadow: none;
+    margin: 10px 0;
+    border-radius: 50px;
+    border: 1px solid transparent;
+}
+
+.footer-fondo{
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    display: block;
+    background: #252020;
+    padding: 60px 0;
+}
+
+.footer-title {
+    color: white;
+    font-weight: bolder
+}

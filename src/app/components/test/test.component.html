@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div class="block-main">
+        <div class="cam">
+            
+            <div class="cam">
+                <app-video-player
+                  [width]="dimensionVideo.width"
+                  [height]="dimensionVideo.height"
+                  [stream]="currentStream">
+                </app-video-player>
+              </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="zone-body">
+                <div class="block">
+                    block 1
+                </div>
+                <div class="block">
+                    block 2
+                </div>
+            </div>
+            <div class="zone-btn">
+                <ul class="list-btn">
+                    <li *ngFor="let btn of [1,1,1]" >
+                        <i class="uil uil-emoji"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

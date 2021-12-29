@@ -1,0 +1,12 @@
+<div>
+    <video #videoElement
+        [style.width]="width+'px'"
+        [style.height]="height+'px'"
+        (loadedmetadata)="loadedMetaData()"
+        (play)="listenerPlay()"
+        *ngIf="stream"
+        [srcObject]="stream">
+
+    </video>
+</div>
+

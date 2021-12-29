@@ -1,0 +1,100 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+::ng-deep .space-preview canvas {
+  position: relative;
+  width: 100%;
+  height: 25rem;
+}
+::ng-deep .canvas-preview {
+  position: relative;
+}
+::ng-deep .canvas-preview canvas {
+  width: 100%;
+}
+.block-expression {
+  padding: 0.5rem;
+}
+.block-expression .value-number {
+  color: blue;
+}
+.wrapper {
+  margin: 3%;
+  width: 70vw;
+  height: 75vh;
+  background-color: white;
+  box-shadow: 0 0px 80px rgba(0, 0, 0, 0.17);
+}
+.wrapper .header {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 0.25rem 1.5rem;
+  height: 3rem;
+  border-bottom: solid 1px #f1f1f1;
+  justify-content: space-between;
+}
+.wrapper .header .in-header {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.wrapper .header .title {
+  font-weight: 500;
+  padding: 0 0.75rem;
+}
+.wrapper .header .uil {
+  font-size: 1.5rem;
+}
+.wrapper .block-main {
+  display: grid;
+  height: calc(100% - 3.5rem);
+  grid-template-columns: 2fr 1fr;
+}
+.wrapper .block-main .cam {
+  position: relative;
+}
+.wrapper .block-main .cam .placeholder {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.wrapper .block-main .sidebar {
+  border-left: solid 1px #f1f1f1;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+}
+.wrapper .block-main .sidebar .zone-body {
+  padding: 0;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+.wrapper .block-main .sidebar .zone-body .block {
+  padding: 1rem;
+  border-top: solid 1px #f1f1f1;
+}
+.wrapper .block-main .sidebar .zone-body .block:first-child {
+  border-top: 0;
+}
+.wrapper .block-main .sidebar .zone-btn {
+  border-left: solid 1px #f1f1f1;
+}
+.wrapper .block-main .sidebar .list-btn {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+.wrapper .block-main .sidebar .list-btn li {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link-github {
+  cursor: pointer;
+  text-decoration: none;
+  color: #222;
+}

@@ -27,9 +27,19 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.default.min.css",
+              "src/assets/css/templatemo-style.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/angular-screenshot/build/angular-screenshot.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/angular-screenshot/build/angular-screenshot.min.js"
+            ]
           },
           "configurations": {
             "production": {
