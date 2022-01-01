@@ -1,34 +1,107 @@
-<div class="wrapper">
-    <div class="block-main">
-        <div class="cam">
-            
-            <div class="cam">
-                <app-video-player
-                  [width]="dimensionVideo.width"
-                  [height]="dimensionVideo.height"
-                  [stream]="currentStream">
-                </app-video-player>
-              </div>
+<!-- <div class="cam">
+  <app-video-player
+    [width]=320
+    [height]=270
+    [stream]="currentStream">
+  </app-video-player>
+</div> -->
 
-        </div>
+<!-- <div class="wrapper">
 
-        <div class="sidebar">
-            <div class="zone-body">
-                <div class="block">
-                    block 1
-                </div>
-                <div class="block">
-                    block 2
-                </div>
-            </div>
-            <div class="zone-btn">
-                <ul class="list-btn">
-                    <li *ngFor="let btn of [1,1,1]" >
-                        <i class="uil uil-emoji"></i>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  
 
+  <div class="block-main">
+    <div class="cam">
+      <app-video-player
+        [width]="dimensionVideo.width"
+        [height]="dimensionVideo.height"
+        [stream]="currentStream">
+      </app-video-player>
     </div>
-</div>
+
+</div> -->
+
+ <!-- <app-video-player
+    [width]=320
+    [height]=270
+    [stream]="currentStream">
+  </app-video-player> -->
+
+  <div class="container">
+    
+    <div class="row">
+      <div class="col">
+      <h2 style="text-align: center;"> Test de programacion I </h2> 
+       <form #responseForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group"> <!-- Question one -->
+            <label for="respOne" class="control-label">1. La programación se puede definir como:</label>
+            <select class="form-control" id="respOne"   name="respOne" #respOne="ngModel" [(ngModel)]="responses[0]">
+              <option value="R1">El proceso de diseñar, codificar, depurar y mantener el código fuente que le diga a la maquina que hacer.</option>
+              <option value="R2">La ejecución de programas de ordenador</option>
+              <option value="R3">La instalación de programas que permiten comunicarse con la maquina</option>
+              <option value="R4">Todas las anteriores</option>
+          </select> 
+        </div>    
+    
+        <div class="form-group"> <!-- Question two -->
+            <label for="respTwo" class="control-label">2. ¿Qué es un algoritmo?</label>
+            <select class="form-control" id="respTwo"   name="respTwo" #respTwo="ngModel" [(ngModel)]="responses[1]">
+              <option value="R1"> Un conjunto de instrucciones o reglas bien definidas, ordenadas y finitas que permiten realizar una actividad mediante pasos sucesivos que no generen dudas a quien deba realizar dicha actividad</option>
+              <option value="R2">Es una igualdad entre dos expresiones algebraicas, denominadas miembros, en las que aparecen valores conocidos o datos, y desconocidos o incógnitas, relacionados mediante operaciones</option>
+              <option value="R3">Es una relación de variables que pueden ser cuantificadas para calcular el valor de otras de muy difícil o imposible cálculo y que suministra una solución para un problema</option>
+              <option value="R4">Ninguna de las anteriores</option>
+          </select> 
+          </div>                    
+                                
+        <div class="form-group"> <!-- Question three -->
+            <label for="respThree" class="control-label">3. ¿Que es un lenguaje de programación?</label>
+            <select class="form-control" id="respThree"   name="respThree" #respThree="ngModel" [(ngModel)]="responses[2]">
+              <option value="R1">Es un compilador estable y potente para la solución de problemas humanos y los entienda físicamente la PC.</option>
+              <option value="R2">Es un Programa que define un medio de comunicación compartido por un grupo de personas y la PC (por ejemplo: inglés o francés).</option>
+              <option value="R3"> Es un programa o software diseñado para escribir un conjunto de acciones consecutivas que un equipo debe ejecutar.</option>
+              <option value="R4">Todas las anteriores</option>
+          </select> 
+          </div>    
+    
+        <div class="form-group"> <!-- Question four-->
+            <label for="respFour" class="control-label">4. La programación sirve para:</label>
+            <select class="form-control" id="respFour"   name="respFour" #respFour="ngModel" [(ngModel)]="responses[3]">
+              <option value="R1">Resolver problemas y facilitar tareas manuales</option>
+              <option value="R2">Decirle a la maquina que debe hacer</option>
+              <option value="R3">Comunicarnos con la maquina</option>
+              <option value="R4">Todas las anteriores</option>
+          </select> 
+          </div>                                    
+                                
+        <div class="form-group"> <!-- Question five -->
+            <label for="respFive" class="control-label">5. Con un lenguaje de programación podemos:</label>
+            <select class="form-control" id="respFive"  name="respFive" #respFive="ngModel" [(ngModel)]="responses[4]">
+                <option value="R1">Desarrollar paginas web hasta videojuegos</option>
+                <option value="R2">Desarrollar únicamente paginas web</option>
+                <option value="R3">Desarrollar únicamente videojuegos</option>
+                <option value="R4"> Ninguna de las anteriores</option>
+            </select>                    
+        </div>      
+        
+        <div class="form-group"> <!-- Submit Button -->
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary">Finalizar</button>
+            </div>
+        </div>     
+        
+    </form>
+      </div>
+      <div class="col col-lg-3">
+        <h3 style="text-align: center">Online</h3>
+          <app-video-player
+          [width]=320
+          [height]=270
+          [stream]="currentStream">
+        </app-video-player>
+      </div>
+        
+    </div>
+  </div>
+
+  
