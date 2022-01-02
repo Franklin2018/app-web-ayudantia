@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="alert alert-danger col-md-6 offset-md-3 mt-3" *ngIf="error">
+    Login failed!!!, verify your credentials.
+</div>
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1>Login</h1>
+    <div class="inset">
+        <p>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+           
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"required>
+            
+        </p>
+
+    </div>
+    <p class="p-container">
+        <button class="btn btn-info" type="submit" style="color: white;" [disabled]="loginForm.invalid">Login</button>
+        <button class="btn btn-danger" [routerLink]="['/register']" style="color: white; margin-left: 5px;"> Register</button>
+    </p>
+</form>

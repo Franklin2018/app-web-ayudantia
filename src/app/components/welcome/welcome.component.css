@@ -20,7 +20,7 @@
     font-family: 'Muli', sans-serif;
     font-weight: bold;
     font-size: 1.5em;
-    color: #454545;
+    color: #ffffff;
     line-height: normal;
     margin: 10px 0;
 }
@@ -32,7 +32,7 @@
     font-family: 'Nunito', sans-serif;
     box-sizing: border-box;
     margin: 0 0 10px;
-    color: #757575;
+    color: #ffffff;
     font-size: 14px;
     font-weight: normal;
     line-height: 24px;
@@ -79,7 +79,7 @@
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     line-height: 1.42857143;
-    color: #333;
+    color: rgb(255, 255, 255);
     font-family: 'Nunito', sans-serif;
     text-align: center;
     box-sizing: border-box;
