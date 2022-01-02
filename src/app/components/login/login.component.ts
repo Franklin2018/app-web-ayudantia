@@ -11,6 +11,8 @@ import {Router,ActivatedRoute, Params} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public error:boolean | undefined;
+  public title:string;
+  public type:number;
   public usuario=[
       {rol :''},
       {id:''},
@@ -34,10 +36,21 @@ export class LoginComponent implements OnInit {
   	private _router:Router,
   ) { 
     this.user=new User("","","","","","");
-    this
   }
 
   ngOnInit(): void {
+    this.setTitle();
+  }
+  setTitle() {
+ //Verify StudentUser or AuxiliarUser
+ this._route.params.subscribe(params=>{
+  this.type=+params['id'];
+    if (this.type==1) {
+      this.title="Login Estudiante"
+    }else{
+      this.title="Login Auxiliar"
+    }
+});	
   }
 
   onSubmit(){
@@ -84,12 +97,5 @@ export class LoginComponent implements OnInit {
 
   }
 
-  getType(){
-    //Verify StudentUser or AuxiliarUser
-      this._route.params.subscribe(params=>{
-        let type=+params['id'];
-    
-      });	
-    }
-
+ 
 }

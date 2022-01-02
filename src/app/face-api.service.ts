@@ -26,6 +26,7 @@ export class FaceApiService {
       console.log('Models uploaded!!!')
       this.cbModels.emit(true);
     });
+
   }
 
 

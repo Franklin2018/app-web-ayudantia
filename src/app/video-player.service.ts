@@ -22,7 +22,7 @@ export class VideoPlayerService {
       .withFaceLandmarks()
       .withFaceExpressions();
       //  const resizedDetections = globalFace.resizeResults(detectionsFaces, displaySize);
-
+  
       console.log(detectionsFaces);
       console.log(detectionsFaces.length);
       

@@ -3,7 +3,7 @@
 </div>
 
 <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-    <h1>Login</h1>
+    <h1>{{title}}</h1>
     <div class="inset">
         <p>
             <label for="correo">Correo</label>
@@ -23,6 +23,6 @@
     </div>
     <p class="p-container">
         <button class="btn btn-info" type="submit" style="color: white;" [disabled]="loginForm.invalid">Ingresar</button>
-        <button class="btn btn-danger" [routerLink]="['/register']" style="color: white; margin-left: 5px;"> Registrar</button>
+        <button *ngIf="type==2" class="btn btn-danger" [routerLink]="['/register']" style="color: white; margin-left: 5px;"> Registrar</button>
     </p>
 </form>
