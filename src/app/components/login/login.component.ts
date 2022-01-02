@@ -11,7 +11,20 @@ import {Router,ActivatedRoute, Params} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public error:boolean | undefined;
-  public identity: any;
+  public usuario=[
+      {rol :''},
+      {id:''},
+      {correo:''},
+      {img_perfil:''},
+  ];
+  public persona=[
+    {id :''},
+    {nombre:''},
+    {apellidos:''},
+    {celular:''},
+    {direccion:''},
+];
+  public userData: any;
   public user : User;
   public token: any;
 
@@ -20,46 +33,62 @@ export class LoginComponent implements OnInit {
   	private _route:ActivatedRoute,
   	private _router:Router,
   ) { 
-    this.user=new User('','','','',true,'','','');
+    this.user=new User("","","","","","");
+    this
   }
 
   ngOnInit(): void {
-    this.getType();
   }
 
   onSubmit(){
-    // this._userService.login(this.user).subscribe(
-    //   response=>{
-    //       if(response.user && response.user._id){
-    //         localStorage.setItem('room', 'true'); 
-    //         this.identity=response.user;
-    //         localStorage.setItem('identity', JSON.stringify(this.identity));
-    //         this.token=response.token;
-    //         localStorage.setItem('token', this.token);
-    //         this.error=false;
-    //         localStorage.setItem('type', 'home');
-    //         this._router.navigate(['/home']);
-    //       }else{
-    //         this.error=true;
-    //         console.log(this.error)
-    //         console.log(response.err);
-           
-          
-    //       }
-    //   },
-    //   err=>{
-    //     this.error=true;
-    //    console.log(err.error.err.message);
+    this._userService.login(this.user).subscribe(
+      response=>{
+          if(response.ok == true){
+            this.setData(response);
+            
+            localStorage.setItem('usuario', JSON.stringify(this.usuario));
+            localStorage.setItem('persona', JSON.stringify(this.persona));
+            localStorage.setItem('userData', JSON.stringify(this.userData));
+            localStorage.setItem('token', this.token);
+            this.error=false;
+            this._router.navigate(['/home']);
+          }else{
+            this.error=true;
+            console.log(response);
+          }
+      },
+      err=>{
+        this.error=true;
+        console.log(err);
        
-    //   }
-    // );
+      }
+    );
+  }
+
+  
+  setData(response: any) {
+  this.usuario[0].rol=response.usuario.rol;
+  this.usuario[1].id=response.usuario._id;
+  this.usuario[2].correo=response.usuario.correo;
+  this.usuario[3].img_perfil=response.usuario.img_perfil;
+
+  this.persona[0].id=response.persona._id;
+  this.persona[1].nombre=response.persona.nombre;
+  this.persona[2].apellidos=response.persona.apellidos;
+  this.persona[3].celular=response.persona.celular;
+  this.persona[4].direccion=response.persona.direccion;
+
+  this.userData=response.data;
+
+  this.token=response.token; 
+
   }
 
   getType(){
     //Verify StudentUser or AuxiliarUser
       this._route.params.subscribe(params=>{
         let type=+params['id'];
-       console.log(type);
+    
       });	
     }
 

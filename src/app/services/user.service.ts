@@ -9,7 +9,9 @@ import { global } from './global';
 export class UserService{
  
     public url: string;
-    public identity: any;
+    public usuario: any;
+    public persona: any;
+    public userData: any;
     public token: any;
 
     
@@ -36,18 +38,49 @@ return this._http.post(this.url+'login', params,{headers:headers});
 
 }
 
-getIdentity(){
-let identity=JSON.parse(localStorage.getItem('identity')|| '{}');
 
 
-if(identity && identity != null && identity !='undefined' && identity!=undefined){
-    this.identity=identity;
+getUsuario(){
+let usuario=JSON.parse(localStorage.getItem('usuario')|| '{}');
+
+
+if(usuario && usuario != null && usuario !='undefined' && usuario!=undefined){
+    this.usuario=usuario;
     }else{
-    this.identity=null;
+    this.usuario=null;
     }
 
-    return this.identity;
+    return this.usuario;
 }
+
+
+getPersona(){
+    let persona=JSON.parse(localStorage.getItem('persona')|| '{}');
+    
+    
+    if(persona && persona != null && persona !='undefined' && persona!=undefined){
+        this.persona=persona;
+        }else{
+        this.persona=null;
+        }
+    
+        return this.persona;
+    }
+
+
+    getUserData(){
+        let userData=JSON.parse(localStorage.getItem('userData')|| '{}');
+        
+        
+        if(userData && userData != null && userData !='undefined' && userData!=undefined){
+            this.userData=userData;
+            }else{
+            this.userData=null;
+            }
+        
+            return this.userData;
+        }
+
 
 
 getToken(){

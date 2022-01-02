@@ -6,19 +6,23 @@
     <h1>Login</h1>
     <div class="inset">
         <p>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-           
+            <label for="correo">Correo</label>
+            <input type="text" name="correo" id="correo" #correo="ngModel" [(ngModel)]="user.correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <small *ngIf="!correo.valid && correo.touched" class="invalid-feedback d-block">
+                El correo no es válido.
+                </small>
         </p>
         <p>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password"required>
-            
+            <label for="contrasena">Contraseña</label>
+            <input type="password" name="contrasena" id="contrasena" #contrasena="ngModel" [(ngModel)]="user.contrasena" required>
+            <small *ngIf="!contrasena.valid && contrasena.touched" class="invalid-feedback d-block">
+                La contraseña no puede estar vacia.
+                </small>
         </p>
 
     </div>
     <p class="p-container">
-        <button class="btn btn-info" type="submit" style="color: white;" [disabled]="loginForm.invalid">Login</button>
-        <button class="btn btn-danger" [routerLink]="['/register']" style="color: white; margin-left: 5px;"> Register</button>
+        <button class="btn btn-info" type="submit" style="color: white;" [disabled]="loginForm.invalid">Ingresar</button>
+        <button class="btn btn-danger" [routerLink]="['/register']" style="color: white; margin-left: 5px;"> Registrar</button>
     </p>
 </form>
