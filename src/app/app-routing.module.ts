@@ -25,7 +25,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login',
+    path: 'login/:id',
     component: LoginComponent
   },
   {
