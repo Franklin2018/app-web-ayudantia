@@ -50,6 +50,7 @@ loadUser(){
     this.token=this._userService.getToken();
    }
 
+   
    logout(){
     this.status=false;
     localStorage.clear();

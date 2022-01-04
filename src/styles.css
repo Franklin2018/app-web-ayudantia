@@ -4,3 +4,13 @@ body {
     font-size: 12px;
     background: #333 url('https://www.xtrafondos.com/descargar.php?id=3593&resolucion=2560x1440');
 }
+
+/* You can add global styles to this file, and also import other style files */
+.df-messenger {
+    --df-messenger-bot-message: #878fac;
+    --df-messenger-button-titlebar-color: #df9b56;
+    --df-messenger-chat-background-color: #fafafa;
+    --df-messenger-font-color: white;
+    --df-messenger-send-icon: #878fac;
+    --df-messenger-user-message: #479b3d;
+   }
