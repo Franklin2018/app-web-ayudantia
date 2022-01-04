@@ -13,21 +13,34 @@ export class VideoPlayerService {
     
   }
 
-  getLandMark = async (videoElement: any) => {
+  getLandMark = async (videoElement: any, imageTarget:any) => {
     const {globalFace} = this.faceApiService;
     const {videoWidth, videoHeight} = videoElement.nativeElement;
     const displaySize = {width: videoWidth, height: videoHeight};
     // console.log(displaySize);
     const detectionsFaces = await globalFace.detectAllFaces(videoElement.nativeElement)
-      .withFaceLandmarks()
-      .withFaceExpressions();
+      .withFaceLandmarks().withFaceDescriptors();
       //  const resizedDetections = globalFace.resizeResults(detectionsFaces, displaySize);
-  
+     if(!detectionsFaces.length || !videoElement){return;}
+
       console.log(detectionsFaces);
       console.log(detectionsFaces.length);
+   
+    
+    const faceMatcher = new globalFace.FaceMatcher(detectionsFaces);
+    
+    const singleResult = await globalFace
+      .detectSingleFace(imageTarget)
+      .withFaceLandmarks()
+      .withFaceDescriptor()
+    
+    if (singleResult) {
+      const bestMatch = faceMatcher.findBestMatch(singleResult.descriptor)
+      console.log(bestMatch.toString())
+    }
+
+
       
-      
-      // console.log(displaySize );
     const landmark = detectionsFaces[0].landmarks || null;
     const expressions = detectionsFaces[0].expressions || null;
     const eyeLeft = landmark.getLeftEye();

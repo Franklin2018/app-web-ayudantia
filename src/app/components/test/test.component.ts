@@ -25,8 +25,8 @@ export class TestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.checkMediaSource();
-    // this.getSizeCam();
+    this.checkMediaSource();
+    this.getSizeCam();
 
   }
 

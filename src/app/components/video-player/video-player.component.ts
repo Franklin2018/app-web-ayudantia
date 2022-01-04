@@ -15,6 +15,7 @@ export class VideoPlayerComponent implements OnInit , OnDestroy  {
   @Input() height: number;
   modelsReady: boolean;
   listEvents: Array<any>=[];  
+  public image:any;
   overCanvas: any;
   filters = [
     {
@@ -34,6 +35,12 @@ export class VideoPlayerComponent implements OnInit , OnDestroy  {
 
   ngOnInit(): void {
     this.listenerEvents();
+  }
+  getImage() {
+   const imagePerfil=document.createElement('img');
+   imagePerfil.src='/assets/perfil/perfil.jpg';  
+   this.image=imagePerfil;
+  //  console.log(imagePerfil);
   }
 
   ngOnDestroy(): void {
@@ -74,8 +81,13 @@ export class VideoPlayerComponent implements OnInit , OnDestroy  {
   };
 
   checkFace = () => {
+    const imagePerfil=document.createElement('img');
+    imagePerfil.src='/assets/perfil/perfil.jpg';
     setInterval(async () => {
-      await this.videoPlayerService.getLandMark(this.videoElement);
+      
+      await this.videoPlayerService.getLandMark(this.videoElement, imagePerfil);
+      this.getImage();
+
     }, 1000);
   };
 
@@ -92,5 +104,8 @@ export class VideoPlayerComponent implements OnInit , OnDestroy  {
       this.renderer2.setStyle(this.overCanvas, 'height', `${this.height}px`);
       this.renderer2.appendChild(this.elementRef.nativeElement, this.overCanvas);
     }
+    
+  }
 
-}
+
+  
