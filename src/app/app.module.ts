@@ -13,6 +13,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 
 import { UserService } from './services/user.service';
+import { AsignaturaService } from './services/asignatura.service';
+import { ListaMateriasComponent } from './components/lista-materias/lista-materias.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 
@@ -24,7 +27,9 @@ import { UserService } from './services/user.service';
     HomeComponent,
     VideoPlayerComponent,
     WelcomeComponent,
-    LoginComponent
+    LoginComponent,
+    ListaMateriasComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { UserService } from './services/user.service';
     HttpClientModule
     ],
   providers: [
-    UserService
+    UserService,
+    AsignaturaService
   ],
   bootstrap: [AppComponent]
 })

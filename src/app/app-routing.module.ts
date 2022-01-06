@@ -17,7 +17,7 @@ const routes: Routes = [
     component: JitsiComponent
   },
   {
-    path: 'aux/test',
+    path: 'aux/test/:id',
     component: TestComponent
   },
   {

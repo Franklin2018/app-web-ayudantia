@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link mr-2" [routerLink]="['/login/1']" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">Estudiante</a>
+                    <a class="nav-link mr-2" [routerLink]="['/login/1']" style="cursor: pointer;" data-toggle="modal" data-target="#materiaModal">Estudiante</a>
                   
                 </li>
                 <li class="nav-item" >
@@ -23,7 +23,7 @@
                     <a class="nav-link mr-2" [routerLink]="['/saved']" style="cursor: pointer;" >Mis Materias</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-2" [routerLink]="['/room']" style="cursor: pointer;" >Nueva Materia</a>
+                    <a class="nav-link mr-2"  style="cursor: pointer;" data-toggle="modal" data-target="#materiaModal" (click)="getAsignaturas()" >Nueva Materia</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mr-2" [routerLink]="['/myrooms']" style="cursor: pointer;">Mis reuniones</a>
@@ -56,6 +56,31 @@
     <body>
 
 
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="materiaModal" tabindex="-1" role="dialog" aria-labelledby="materiaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="materiaModalLabel">Añadir Materia</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <select class="form-control" id="respFour" name="respFour"  #respFour="ngModel" [(ngModel)]="materiaId" >
+                    <option *ngFor="let asignatura of asignaturas"  value={{asignatura._id}}>{{asignatura.nombre}}</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" [routerLink]="['/aux/test/'+materiaId]" data-dismiss="modal">Realizar el test</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
     </body>

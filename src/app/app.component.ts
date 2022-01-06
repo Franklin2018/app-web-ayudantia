@@ -1,12 +1,14 @@
 import { Component, DoCheck } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './services/user.service';
+import { AsignaturaService } from './services/asignatura.service';
+import { Asignatura } from './models/asignatura';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[UserService]
+  providers:[UserService, AsignaturaService]
 })
 export class AppComponent implements DoCheck {
   title = 'Auxiliaturas';
@@ -15,11 +17,14 @@ export class AppComponent implements DoCheck {
   public userData:any;
   public token:any;
   public status:boolean;
+  public materiaId:any;
+  public asignaturas:Asignatura[] | undefined;
 
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
     private _userService:UserService,
+    private _asignaturaService:AsignaturaService
   ) {
     this.usuario=this._userService.getUsuario();
     this.persona=this._userService.getPersona();
@@ -28,6 +33,8 @@ export class AppComponent implements DoCheck {
    } 
    
   ngOnInit(): void {
+    this.getAsignaturas();
+
   }
 
   ngDoCheck(): void {
@@ -60,5 +67,18 @@ loadUser(){
     this.token=null;  
     this._router.navigate(['/']);
   }
+
+  getAsignaturas(){
+    this._asignaturaService.getAsignaturas().subscribe(res=>{
+    this.asignaturas=res.asignaturas;
+      },
+      err=>{
+    console.log(err);
+      }
+      );
+
+  }
+
+
 }
 
