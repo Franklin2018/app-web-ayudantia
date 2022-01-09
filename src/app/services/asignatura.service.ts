@@ -30,6 +30,18 @@ getAsignaturaById(asignaturaId):Observable<any>{
   return this._http.get(this.url+'getasignatura/'+asignaturaId,{headers:headers});
 }	
 
+getAuxiliarById(auxiliarId):Observable<any>{
+  let headers= new HttpHeaders().set('Content-Type', 'application/json');
+  return this._http.get(this.url+'getauxbyid/'+auxiliarId,{headers:headers});
+}	
 
+
+pushAdignaturaToUser(dataAsigUser:any):Observable<any>{
+    
+  let params=JSON.stringify(dataAsigUser);
+  let headers= new HttpHeaders().set('Content-Type', 'application/json');
+  return this._http.post(this.url+'pushtouser', params,{headers:headers});
+  
+  }
 
 }

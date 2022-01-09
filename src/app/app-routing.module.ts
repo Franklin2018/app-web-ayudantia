@@ -5,7 +5,9 @@ import { TestComponent } from './components/test/test.component';
 import { HomeComponent } from './components/home/home.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
-import { VideoPlayerComponent } from './components/video-player/video-player.component';
+import { ListaMateriasComponent } from './components/lista-materias/lista-materias.component';
+import { ErrorComponent } from './components/error/error.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
@@ -33,8 +35,16 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   {
-    path: 'video',
-    component: VideoPlayerComponent
+    path: 'mismaterias',
+    component: ListaMateriasComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {path:'**',
   component:WelcomeComponent

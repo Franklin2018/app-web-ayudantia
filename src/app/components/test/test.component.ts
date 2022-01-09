@@ -1,21 +1,23 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { FaceApiService } from 'src/app/face-api.service';
-import { VideoPlayerService } from 'src/app/video-player.service';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { AsignaturaService } from '../../services/asignatura.service';
 import {Router,ActivatedRoute, Params} from '@angular/router';
 import { Test } from 'src/app/models/test';
-import { Pregunta } from 'src/app/models/pregunta';
-import { Respuesta } from 'src/app/models/respuesta';
+import { UserService } from 'src/app/services/user.service';
+import * as faceapi from 'face-api.js';
 
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css'],
-  providers:[AsignaturaService]
+  providers:[AsignaturaService,UserService]
 })
 export class TestComponent implements OnInit {
-
+  private llave:boolean=true;
+  modelsReady: boolean;
+ @ViewChild('videoContainer', {static: true}) videoContainer!: ElementRef;
+  @ViewChild('myCanvas', {static:true}) myCanvas!: ElementRef;
+  public context!: CanvasRenderingContext2D;
   public finalScore:number=0;
   public messageScore:any;
   public currentStream:any;
@@ -31,23 +33,108 @@ export class TestComponent implements OnInit {
   
 
   constructor(
-    private faceApiService: FaceApiService,
     private _testService:AsignaturaService,
-    private videoPlayerService: VideoPlayerService,
-    private renderer2: Renderer2,
-    private elementRef: ElementRef,
+    private _userService:UserService,
     private _route:ActivatedRoute,
   	private _router:Router,
   ) { 
-    // this.test=new Test("","","",[this.pregunta]);
-    // this.pregunta=new Pregunta("","",[this.respuesta]);
+    
   }
 
   ngOnInit(): void {
-    // this.checkMediaSource();
-    // this.getSizeCam();
-     this.setTitle();
-     this.getTest();
+    this.getTest();
+    this.main();
+    this.setTitle();
+
+  }
+
+  
+   
+
+  async main(){ 
+
+    var video = await navigator.mediaDevices.getUserMedia({ video: true });
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('/assets/models'),
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('/assets/models');
+    
+    this.videoContainer.nativeElement.srcObject = video;
+    this.context = this.myCanvas.nativeElement.getContext('2d');    
+   
+
+    const displaSize = {
+      width: this.videoContainer.nativeElement.width, 
+      height: this.videoContainer.nativeElement.height
+    };
+    
+    faceapi.matchDimensions(this.myCanvas.nativeElement, this.videoContainer.nativeElement);
+
+    //Capturando Frame por Frame cada intervalo de tiempo
+    setInterval(async () => {
+     //Detecting all faces for verification of one only face.
+    const detectionsFaces = await faceapi.detectAllFaces(this.videoContainer.nativeElement, new faceapi.TinyFaceDetectorOptions())
+                                      .withFaceLandmarks()  
+                                      .withFaceExpressions()
+                                      .withFaceDescriptors();
+
+          if(!detectionsFaces.length){
+            this.llave=true;
+            return;
+          }
+
+      console.log(detectionsFaces);
+      console.log(detectionsFaces.length);
+      //Verifying only one person doing the test
+      if(detectionsFaces.length > 1 ){
+        this._router.navigate(['/error']);
+      }else{
+        if(this.llave){
+          //Verificancion de autenticidad 
+          this.llave=false;
+          await this.validacionAuth(detectionsFaces);
+        }
+
+      }
+  
+
+      const resizeDetections = faceapi.resizeResults(detectionsFaces, displaSize);
+
+      this.context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+      
+      faceapi.draw.drawDetections(this.myCanvas.nativeElement, resizeDetections);
+      faceapi.draw.drawFaceLandmarks(this.myCanvas.nativeElement, resizeDetections);
+      faceapi.draw.drawFaceExpressions(this.myCanvas.nativeElement, resizeDetections);
+
+    },500);
+
+  
+  }
+  async validacionAuth(detectionsFaces: faceapi.WithFaceDescriptor<faceapi.WithFaceExpressions<faceapi.WithFaceLandmarks<{ detection: faceapi.FaceDetection; }, faceapi.FaceLandmarks68>>>[]) {
+     const faceMatcher = new faceapi.FaceMatcher(detectionsFaces);
+    const imagePerfil=document.createElement('img');
+    //Change to dinamic value
+    imagePerfil.src='assets/perfil/perfil.jpg';  
+    imagePerfil.crossOrigin="anonymous";
+    const singleResult = await faceapi
+      .detectSingleFace(imagePerfil)
+      .withFaceLandmarks()
+      .withFaceDescriptor()
+
+      if(singleResult){
+        const bestMatch = faceMatcher.findBestMatch(singleResult.descriptor) 
+        if(bestMatch.label!="person 1"){
+          this._router.navigate(['/error']);
+        }
+      }
+  }
+
+
+
+
+  reload(){
+  location.reload();
 
   }
 
@@ -112,51 +199,39 @@ setTitle() {
 
  if(this.finalScore >50){
   this.messageScore="Felicidades!!!, materia aprobada.";
-  //TODO: Añadir la materia al auxiliar
+  //Add materia to aux
+  this.pushMateriaToUser();
  }else{
   this.messageScore="Solicitud rechazada, siga intentado.";
-
  }
 
+ 
 
+  }
+  pushMateriaToUser() {
+     this._route.params.subscribe(params=>{
+
+    let data= {"asignaturaId":params['id'],
+                "id":this._userService.getUserData()._id
+              }
+
+    this._testService.pushAdignaturaToUser(data).subscribe(
+      response=>{
+          if(response.ok == true){
+            console.log(response)
+          }else{
+            console.log(response);
+          }
+      },
+      err=>{
+        console.log(err);
+       
+      }
+    );
+  });	
   }
   
 
   
-  checkMediaSource = () => {
-    if (navigator && navigator.mediaDevices) {
-
-      navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: true
-      }).then(stream => {
-        this.currentStream = stream;
-      }).catch(() => {
-        console.log('**** ERROR NOT PERMISSIONS *****');
-      });
-
-    } else {
-      console.log('******* ERROR NOT FOUND MEDIA DEVICES');
-    }
-  };
-
-  getSizeCam = () => {
-    const elementCam: HTMLElement = document.querySelector('.cam');
-    const {width, height} = elementCam.getBoundingClientRect();
-    this.dimensionVideo = {width, height};
-    console.log(this.dimensionVideo)
-
-    
-  };
-
-  createCanvasPreview = (videoElement: any) => {
-    if (!this.overCanvas) {
-      const {globalFace} = this.faceApiService;
-      this.overCanvas = globalFace.createCanvasFromMedia(videoElement.nativeElement);
-      this.renderer2.setProperty(this.overCanvas, 'id', 'new-canvas-preview');
-      const elementPreview = document.querySelector('.canvas-preview');
-      this.renderer2.appendChild(elementPreview, this.overCanvas);
-    }
-  };
 
 }

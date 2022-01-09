@@ -16,6 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["lodash", "@tensorflow/tfjs-core"],
             "outputPath": "dist/app-web-ayudantia",
             "index": "src/index.html",
             "main": "src/main.ts",

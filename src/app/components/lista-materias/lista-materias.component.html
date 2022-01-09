@@ -1,1 +1,41 @@
-<p>lista-materias works!</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="background-color: rgb(68, 68, 68);">
+                    <span class="glyphicon glyphicon-list"></span>Mis materias
+                </div>
+
+                <div class="panel-body">
+
+                    <ul class="list-group"  *ngFor="let asignatura of asignaturas">
+                        <li class="list-group-item">
+
+                            <div class="checkbox">
+                               
+                                <label for="checkbox" [routerLink]="['/home']">
+                                    {{asignatura.nombre}}
+                                </label>
+                            </div>
+
+                            <div class="pull-right action-buttons">
+                                <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a href="#" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+                            </div>
+                        </li>
+                      
+                    </ul>
+
+                    
+
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>

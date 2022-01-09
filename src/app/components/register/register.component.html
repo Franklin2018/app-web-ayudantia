@@ -1,0 +1,34 @@
+<!-- <div class="alert alert-danger col-md-6 offset-md-3 mt-3" *ngIf="error">
+    Login failed!!!, verify your credentials.
+</div> -->
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <h1>Registrarse</h1>
+    <div class="inset">
+        <p>
+            <label for="img_perfil">Foto Perfil</label>
+            <input type="file" class="form-control-file" accept="image/*" name="image" >
+
+           
+        </p>
+        <p>
+            <label for="correo">Correo</label>
+            <input type="text" name="correo" id="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <!-- <small *ngIf="!correo.valid && correo.touched" class="invalid-feedback d-block">
+                El correo no es válido.
+                </small> -->
+        </p>
+        <p>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" name="contrasena" id="contrasena"  required>
+            <!-- <small *ngIf="!contrasena.valid && contrasena.touched" class="invalid-feedback d-block">
+                La contraseña no puede estar vacia.
+                </small> -->
+        </p>
+
+    </div>
+    <p class="p-container">
+        <button class="btn btn-info" type="submit" style="color: white; margin-right: 5px;" >Aceptar</button>
+        <button class="btn btn-danger ml-4" [routerLink]="['/']"> Cancelar</button>
+    </p>
+</form>

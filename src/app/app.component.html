@@ -13,14 +13,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item" >
-                    <a class="nav-link mr-2" [routerLink]="['/login/1']" style="cursor: pointer;" data-toggle="modal" data-target="#materiaModal">Estudiante</a>
+                    <a class="nav-link mr-2" [routerLink]="['/login/1']" style="cursor: pointer;" >Estudiante</a>
                   
                 </li>
                 <li class="nav-item" >
-                    <a class="nav-link mr-2" [routerLink]="['/login/2']" style="cursor: pointer;" data-toggle="modal" data-target="#roomModal" data-dismiss="modal">Auxiliar</a>
+                    <a class="nav-link mr-2" [routerLink]="['/login/2']" style="cursor: pointer;">Auxiliar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mr-2" [routerLink]="['/saved']" style="cursor: pointer;" >Mis Materias</a>
+                    <a class="nav-link mr-2" [routerLink]="['/mismaterias']" style="cursor: pointer;" >Mis Materias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mr-2"  style="cursor: pointer;" data-toggle="modal" data-target="#materiaModal" (click)="getAsignaturas()" >Nueva Materia</a>

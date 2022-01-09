@@ -34,6 +34,7 @@ export class AppComponent implements DoCheck {
    
   ngOnInit(): void {
     this.getAsignaturas();
+    
 
   }
 
