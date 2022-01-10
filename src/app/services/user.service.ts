@@ -38,6 +38,19 @@ return this._http.post(this.url+'login', params,{headers:headers});
 
 }
 
+pushImageToUser(formData:FormData,imgUrl:any,userId:any){
+   formData.append('image', imgUrl);
+   return this._http.post<any>(this.url+'upload/image/'+userId,formData,);
+}
+
+registerAux(auxData:any):Observable<any>{
+
+  let params=JSON.stringify(auxData);
+  let headers= new HttpHeaders().set('Content-Type', 'application/json');
+  return this._http.post(this.url+'register', params,{headers:headers});
+           
+}
+
 
 
 getUsuario(){
@@ -94,6 +107,8 @@ getToken(){
     
         return this.token;
 }
+
+
 /*
 getEventos(token,id):Observable<any>{
     let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded')

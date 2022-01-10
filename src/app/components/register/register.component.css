@@ -1,6 +1,6 @@
 form {
     background: #111;
-    width: 300px;
+    width: 400px;
     margin: 30px auto;
     border-radius: 0.4em;
     border: 1px solid #191919;
@@ -35,7 +35,7 @@ form:before {
 }
 
 .inset {
-    padding: 20px;
+    padding: 10px;
     border-top: 1px solid #19191a;
     padding-bottom: 0%;
 }
@@ -64,7 +64,7 @@ form h1:after {
 }
 
 label {
-    color: #666;
+    color: rgb(255, 255, 255);
     display: block;
     padding-bottom: 9px;
 }
@@ -103,27 +103,22 @@ input[type="checkbox"] {
     padding-top: 8px;
 }
 
-input[type="submit"] {
-    padding: 5px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 10px 10px rgba(255, 255, 255, 0.1);
-    border-radius: 0.3em;
-    background: #0184ff;
-    color: white;
-    float: right;
-    font-weight: bold;
+
+
+
+ input[type="file"] {
+    display: none;
+} 
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
     cursor: pointer;
-    font-size: 13px;
-}
+} 
 
-input[type="submit"]:hover {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -10px 10px rgba(255, 255, 255, 0.1);
-}
 
-input[type="text"]:hover,
-input[type="password"]:hover,
-label:hover~input[type="text"],
-label:hover~input[type="password"] {
-    background: #27292c;
-}
+
+
+
+

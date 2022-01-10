@@ -27,6 +27,7 @@ export class TestComponent implements OnInit {
   public materiaTitle:any;
   public responses=["","","","",""];
   public dimensionVideo: any;
+  private img_perfil_Aux:any;
   listEvents: Array<any> = [];
   overCanvas: any;
   listExpressions: any = [];
@@ -38,6 +39,7 @@ export class TestComponent implements OnInit {
     private _route:ActivatedRoute,
   	private _router:Router,
   ) { 
+    this.img_perfil_Aux=this._userService.getUsuario();
     
   }
 
@@ -115,7 +117,7 @@ export class TestComponent implements OnInit {
      const faceMatcher = new faceapi.FaceMatcher(detectionsFaces);
     const imagePerfil=document.createElement('img');
     //Change to dinamic value
-    imagePerfil.src='assets/perfil/perfil.jpg';  
+    imagePerfil.src=this.img_perfil_Aux[3].img_perfil;  
     imagePerfil.crossOrigin="anonymous";
     const singleResult = await faceapi
       .detectSingleFace(imagePerfil)
@@ -125,7 +127,10 @@ export class TestComponent implements OnInit {
       if(singleResult){
         const bestMatch = faceMatcher.findBestMatch(singleResult.descriptor) 
         if(bestMatch.label!="person 1"){
+          console.log("VERIFICACION FALLO");
           this._router.navigate(['/error']);
+        }else{
+          console.log("VERIFICACION EXITOSA!!!")
         }
       }
   }
