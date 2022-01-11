@@ -7,25 +7,24 @@
         <div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading" style="background-color: rgb(68, 68, 68);">
-                    <span class="glyphicon glyphicon-list"></span>Mis materias
+                    <span class="glyphicon glyphicon-list"></span>Mis Alumnos - {{nombreAsig}}
+                    <div class="pull-right action-buttons">
+                        <a [routerLink]="['/meet/'+materiaId+'/'+auxId]" style="margin-right: 10px;"><span class="fas fa-video"></span> Iniciar Sala</a>
+                    </div>
                 </div>
 
                 <div class="panel-body">
 
-                    <ul class="list-group"  *ngFor="let asignatura of asignaturas">
+                    <ul class="list-group"  *ngFor="let estudiante of estudiantes">
                         <li class="list-group-item">
 
                             <div class="checkbox">
                                
                                 <label for="checkbox">
-                                    {{asignatura.nombre}}
+                                    {{estudiante.nombre}}  {{estudiante.apellidos}}
                                 </label>
                             </div>
 
-                            <div class="pull-right action-buttons">
-                                <a [routerLink]="['/lista/alumnos/'+asignatura._id]" style="margin-right: 10px;"><span class="fas fa-user-friends"></span> Ver Alumnos</a>
-                                <a href="#" class="trash"><span class="fas fa-plus-circle"></span> Ofertar Materia</a>
-                            </div>
                         </li>
                       
                     </ul>

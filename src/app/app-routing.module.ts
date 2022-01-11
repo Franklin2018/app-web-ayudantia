@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ListaMateriasComponent } from './components/lista-materias/lista-materias.component';
 import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListaEstudiantesComponent } from './components/lista-estudiantes/lista-estudiantes.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     component: WelcomeComponent
   },
   {
-    path: 'meet',
+    path: 'meet/:materiaId/:auxId',
     component: JitsiComponent
   },
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'mismaterias',
     component: ListaMateriasComponent
+  },
+  {
+    path: 'lista/alumnos/:id',
+    component: ListaEstudiantesComponent
   },
   {
     path: 'error',

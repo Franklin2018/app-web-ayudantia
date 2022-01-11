@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AsignaturaService } from 'src/app/services/asignatura.service';
+import { UserService } from 'src/app/services/user.service';
 declare var JitsiMeetExternalAPI: any;
 
 @Component({
@@ -14,27 +16,48 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     options: any;
     api: any;
     user: any;
-
+    
     // For Custom Controls
     isAudioMuted = false;
     isVideoMuted = false;
 
+    //For meet option
+    auxId:any;
+    nombreAux:any;
+    nombreSala:any;
+
     constructor(
-        private router: Router
-    ) { }
+      private _userService:UserService,
+      private router: Router,
+      private _asignaturaService:AsignaturaService,
+        private _route:ActivatedRoute,
+    ) {
+        this.nombreAux=this._userService.getPersona();
+        this.auxId=this._userService.getUsuario();
+     }
 
     ngOnInit(): void {
-        this.room = 'bwb-bfqi-vmh'; // set your room name
+       
+     let sala=JSON.parse(localStorage.getItem('sala')|| '{}');
+        this.room = sala; // set your room name
         this.user = {
-            name: 'Akash Verma' // set your username
+            name: this.nombreAux[1].nombre // set your username
         }
+
     }
+
+
+   
+
+   
+
+
 
     ngAfterViewInit(): void {
         this.options = {
             roomName: this.room,
-            width: 900,
-            height: 500,
+            width: 1000,
+            height: 570,
             configOverwrite: { prejoinPageEnabled: false },
             interfaceConfigOverwrite: {
                 // overwrite interface properties
@@ -76,11 +99,14 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     handleVideoConferenceJoined = async (participant) => {
         console.log("handleVideoConferenceJoined", participant); // { roomName: "bwb-bfqi-vmh", id: "8c35a951", displayName: "Akash Verma", formattedDisplayName: "Akash Verma (me)"}
         const data = await this.getParticipants();
+        console.log("CAMBIAR ESTADO DE SALA A HABILITADA")
     }
 
     handleVideoConferenceLeft = () => {
         console.log("handleVideoConferenceLeft");
-        this.router.navigate(['/thank-you']);
+       console.log("CAMBIAR ESTADO DE SALA DESHABILITADO")
+       localStorage.removeItem('sala');
+        this.router.navigate(['/mismaterias']);
     }
 
     handleMuteStatus = (audio) => {
@@ -103,7 +129,8 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     executeCommand(command: string) {
         this.api.executeCommand(command);;
         if(command == 'hangup') {
-            this.router.navigate(['/thank-you']);
+
+            this.router.navigate(['/mismaterias']);
             return;
         }
 
@@ -116,18 +143,3 @@ export class JitsiComponent implements OnInit, AfterViewInit {
         }
     }
 }
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-jitsi',
-//   templateUrl: './jitsi.component.html',
-//   styleUrls: ['./jitsi.component.css']
-// })
-// export class JitsiComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }

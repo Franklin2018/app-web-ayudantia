@@ -15,6 +15,7 @@ import { AsignaturaService } from './services/asignatura.service';
 import { ListaMateriasComponent } from './components/lista-materias/lista-materias.component';
 import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ListaEstudiantesComponent } from './components/lista-estudiantes/lista-estudiantes.component';
 
 
 
@@ -28,7 +29,8 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     ListaMateriasComponent,
     ErrorComponent,
-    RegisterComponent
+    RegisterComponent,
+    ListaEstudiantesComponent
   ],
   imports: [
     BrowserModule,

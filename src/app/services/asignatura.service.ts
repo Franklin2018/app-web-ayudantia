@@ -44,4 +44,18 @@ pushAdignaturaToUser(dataAsigUser:any):Observable<any>{
   
   }
 
+
+
+  getEstudiantesByAuxIdAsigId(auxId:any, asigId:any):Observable<any>{
+  let headers= new HttpHeaders().set('Content-Type', 'application/json');
+   return this._http.get(this.url+'get/students/'+auxId+'/'+asigId,{headers:headers});
+
+  }	
+
+  getSalaByAuxIdAsigId(auxId:any, asigId:any):Observable<any>{
+    let headers= new HttpHeaders().set('Content-Type', 'application/json');
+     return this._http.get(this.url+'getnombresala/'+auxId+'/'+asigId,{headers:headers});
+  
+    }	
+
 }
