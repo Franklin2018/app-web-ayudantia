@@ -152,7 +152,6 @@ getTest(){
           if(response.ok == true){
            this.test=response.test;
            this.pregunta=this.test.preguntas; 
-
            this.pregunta.forEach(resp => {
               this.respuesta.push(resp.respuestas);  
            });
