@@ -1,0 +1,13 @@
+.feature-thumb{
+    -webkit-text-size-adjust: 100%;
+ -webkit-tap-highlight-color: rgba(243, 235, 235, 0);
+ -webkit-font-smoothing: antialiased;
+ font-size: 14px;
+ line-height: 1.42857143;
+ color: rgb(238, 227, 227);
+ font-family: 'Nunito', sans-serif;
+ box-sizing: border-box;
+ border: 1px solid #f0f0f0;
+ padding: 5em 3em;
+ margin-bottom: 50px;
+} 

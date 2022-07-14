@@ -1,9 +1,9 @@
 form {
-    background: #111;
+    background: rgb(97, 87, 87);
     width: 300px;
     margin: 30px auto;
     border-radius: 0.4em;
-    border: 1px solid #191919;
+    border: 1px solid #0e0d0d;
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
@@ -64,7 +64,7 @@ form h1:after {
 }
 
 label {
-    color: #666;
+    color: rgb(180, 173, 173);
     display: block;
     padding-bottom: 9px;
 }

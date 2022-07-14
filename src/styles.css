@@ -1,16 +1,16 @@
 body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    color: white;
+    color: rgb(255, 251, 251);
     font-size: 12px;
-    background: #333 url('https://www.xtrafondos.com/descargar.php?id=3593&resolucion=2560x1440');
+    background: rgb(44, 41, 41) url('https://images.unsplash.com/photo-1636953056323-9c09fdd74fa6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80');
 }
 
 /* You can add global styles to this file, and also import other style files */
 .df-messenger {
-    --df-messenger-bot-message: #878fac;
+    --df-messenger-bot-message: #7a7373;
     --df-messenger-button-titlebar-color: #df9b56;
-    --df-messenger-chat-background-color: #fafafa;
-    --df-messenger-font-color: white;
+    --df-messenger-chat-background-color: #f3f3f3;
+    --df-messenger-font-color: rgb(250, 244, 244);
     --df-messenger-send-icon: #878fac;
     --df-messenger-user-message: #479b3d;
    }
